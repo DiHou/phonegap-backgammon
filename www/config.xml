@@ -177,4 +177,21 @@
     <gap:plugin name="cordova-plugin-admobpro" source="npm" spec="2.19.1" />
     <gap:plugin name="cordova-plugin-admob-facebook" source="npm" spec="1.0.3" />
     
+    <!-- workaround ios10 privacy errors -->
+    <config-file platform="ios" parent="NSCalendarsUsageDescription" mode="replace">
+      <array>
+        <string>This app uses your calendar</string>
+      </array>
+    </config-file>
+    <config-file platform="ios" parent="NSPhotoLibraryUsageDescription" mode="replace">
+      <array>
+        <string>This app uses your photo library</string>
+      </array>
+    </config-file>
+    <config-file platform="ios" parent="NSBluetoothPeripheralUsageDescription" mode="replace">
+      <array>
+        <string>This app uses your bluetooth</string>
+      </array>
+    </config-file>
+    
 </widget>
