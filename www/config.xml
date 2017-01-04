@@ -102,19 +102,6 @@
     <icon src="pgbomit/icon-40.png" gap:platform="ios" width="40" height="40" />
     <icon src="pgbomit/icon-80.png" gap:platform="ios" width="80" height="80" />
 
-    <!-- see: https://www.npmjs.com/package/phonegap-plugin-push -->
-    <gap:plugin name="phonegap-plugin-push" source="npm" spec="1.9.2">
-        <param name="SENDER_ID" value="24803504516" />
-    </gap:plugin>
-
-    <!-- see: https://www.npmjs.com/package/cordova-plugin-facebook4 ; 
-      using specific git version due to this: http://community.phonegap.com/nitobi/topics/sudden-build-error-android
-      gap:plugin spec="https://github.com/jeduan/cordova-plugin-facebook4#aff9a08a86cc6c6a18019f7adc2896ddf97c11cd" source="git" -->
-    <gap:plugin name="cordova-plugin-facebook4" source="npm" spec="1.7.3">
-        <param name="APP_ID" value="215642565558051" />
-        <param name="APP_NAME" value="GoBackgammon" />
-    </gap:plugin>
-
     <!--
       See: https://github.com/apache/cordova-plugin-whitelist
       So you can load an iframe with the game platform.
@@ -141,41 +128,6 @@
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
-
-    <!-- To allow easy social sharing using native intents. 
-      Plugin adds WRITE_EXTERNAL_STORAGE permission, which we don't need, so I remove it below.
-      https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin -->
-    <gap:plugin name="cordova-plugin-x-socialsharing" source="npm" spec="5.1.3" />
-    <config-file platform="android" parent="/manifest" mode="delete">
-        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    </config-file>
-    <config-file platform="ios" target="*-Info.plist" parent="LSApplicationQueriesSchemes">
-        <array>
-            <!-- https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin -->
-            <string>whatsapp</string>
-            <string>fb</string>
-            <!-- https://github.com/jeduan/cordova-plugin-facebook4/blob/master/plugin.xml#L136-L143 -->
-            <string>fbapi</string>
-            <string>fb-messenger-api</string>
-            <string>fbauth2</string>
-            <string>fbshareextension</string>
-        </array>
-    </config-file>
-
-    <!-- https://github.com/EddyVerbruggen/Custom-URL-scheme -->
-    <preference name="AndroidLaunchMode" value="singleInstance" />
-    <gap:plugin name="cordova-plugin-customurlscheme" source="npm" spec="4.2.0" >
-      <param name="URL_SCHEME" value="backgammon" />
-    </gap:plugin>
-
-    <!-- We have to use this if we want native ads (can't use mediation for that):
-    https://github.com/floatinghotpot/cordova-plugin-facebookads
-    <gap:plugin name="cordova-plugin-facebookads" source="npm" spec="4.7.4" />
-    We currently use AdMob pro with mediation to FB ads:
-    https://github.com/floatinghotpot/cordova-admob-pro
-     -->
-    <gap:plugin name="cordova-plugin-admobpro" source="npm" spec="2.19.1" />
-    <gap:plugin name="cordova-plugin-admob-facebook" source="npm" spec="1.0.3" />
     
     <!-- workaround ios10 privacy errors -->
     <config-file platform="ios" parent="NSCalendarsUsageDescription" mode="replace">
